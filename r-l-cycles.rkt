@@ -31,13 +31,21 @@
   (cons(car l-rev)(rev(cdr l-rev))))
 
 ; Higher order function to reverse the list.
-; This function can be used to do
-; left and right cycles of the list elements.
+; This function is used to accomplish functionality
+; left and right cycles functions.
 (define (rev l)
   (rev-impl l null))
 
 ; Reverse functionality implementation function.
 ; Recursively performs list reversing.
+; How it works: 1. Check if list l is empty, if yes return list m. Initially list m is empty.
+;               2. If list l is not empty:
+;               3. Get cdr of list l and set is a first parameter of
+;                  recursion, (rev-impl(cdr l) ...)
+;               4. Concat first element of list l, (car l), with list m
+;                  and set it as second parameter of recursion, (rev-impl ... (cons(car l)m))
+; Recursion happens until list l is empty and list m contains all elements of
+; list l in reversed order. 
 (define (rev-impl l m)
   (if (null? l)
       m
