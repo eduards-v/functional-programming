@@ -6,13 +6,18 @@
 
 (define (lstq l m)
   (if (null? l)
-      null
-      (+ (sqr (- (car l)(car m)))(lstq (cdr l)(cdr m)))))
+      0
+      (lstq-helper l m 0)))
 
-(define (addon l)
+; To solve this problem I defined a helper function that takes
+; an extra parameter sum that is recursevly incremented and return
+; when list is empty.
+(define (lstq-helper l m sum)
   (if (null? l)
-      ))
+      sum
+      (+ sum (lstq-helper (cdr l)(cdr m)(sqr (- (car l)(car m)))))))
 
+; Wrapping squaring to improve readability of the function above.
 (define (sqr x)
   (* x x))
 
