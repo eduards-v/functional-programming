@@ -7,10 +7,14 @@
 (define (lstq l m)
   (if (null? l)
       0
-      (lstq-helper l m 0)))
+      ;(lstq-helper l m 0)))
+      ; Works almost exactly the same as if with helper function.
+      (+ (sqr(- (car l)(car m)))(lstq (cdr l)(cdr m)))))
 
+
+; Not required anymore.... 
 ; To solve this problem I defined a helper function that takes
-; an extra parameter sum that is recursevly incremented and return
+; an extra parameter, sum, which is recursevly incremented and return
 ; when list is empty.
 (define (lstq-helper l m sum)
   (if (null? l)
